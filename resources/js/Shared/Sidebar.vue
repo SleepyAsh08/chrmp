@@ -58,7 +58,7 @@
                     </li>
 
 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <Link class="sidebar-link" href="/users"
                         ><span class="icon-holder"
                             >
@@ -66,8 +66,8 @@
                         </span
                         ><span class="title">Users</span></Link
                     >
-                </li>
-                <li class="nav-item">
+                </li> -->
+                <!-- <li class="nav-item">
                     <Link class="sidebar-link" href="/posts"
                         ><span class="icon-holder"
                             >
@@ -75,8 +75,8 @@
                         </span
                         ><span class="title">Posts</span></Link
                     >
-                </li>
-                <li class="nav-item dropdown">
+                </li> -->
+                <!-- <li class="nav-item dropdown">
                     <a class="dropdown-toggle" href="javascript:void(0);"
                         ><span class="icon-holder"
                             ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-table" viewBox="0 0 16 16">
@@ -100,7 +100,7 @@
                             >
                         </li>
                     </ul>
-                </li>
+                </li> -->
             </ul>
         </div>
     </div>
