@@ -57,6 +57,15 @@
                         >
                     </li>
 
+                    <li class="nav-item">
+                            <Link class="sidebar-link" href="/attendance"
+                                ><span class="icon-holder"
+                                    >
+                                    <icon name="posts"></icon>
+                                </span
+                                ><span class="title">Attendance</span></Link
+                            >
+                        </li>
 
                 <!-- <li class="nav-item">
                     <Link class="sidebar-link" href="/users"

@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Attendee extends Model
 {
     use HasFactory;
+    protected $connection = "mysql";
+    protected $table = 'attendees';
+    protected $guarded = [];
     protected $appends = ["full_name"];
 
     public function getFullNameAttribute()

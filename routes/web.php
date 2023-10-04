@@ -65,6 +65,11 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+Route::prefix('/attendance')->group(function () {
+    Route::get('/', [AttendeeController::class, 'direct']);
+    Route::get('/qrscan', [AttendeeController::class, 'qrscan']);
+});
+
 Route::prefix('/printQR')->group(function () {
     Route::get('/qrcode', [AttendeeController::class, 'qrcode']);
     Route::get('/attendqr', [AttendeeController::class, 'attendqr']);

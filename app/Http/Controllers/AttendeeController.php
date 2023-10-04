@@ -6,6 +6,7 @@ use App\Models\Attendee;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Box\Spout\Reader\Common\Creator\ReaderEntityFactory;
+use Exception;
 use Illuminate\Support\Facades\DB;
 
 class AttendeeController extends Controller
@@ -29,6 +30,23 @@ class AttendeeController extends Controller
             })
             ->paginate(10);
         return inertia('Participants/Index', [
+            "data" => $data,
+            "filters" => $request->only(['search']),
+        ]);
+    }
+
+    public function direct(Request $request)
+    {
+        $data = Attendee::when($request->search, function ($query, $searchItem) {
+            $query->orwhere('First_Name', 'LIKE', '%' . $searchItem . '%')
+                ->orwhere('Last_Name', 'LIKE', '%' . $searchItem . '%')
+                ->orwhere('Middle_Name', 'LIKE', '%' . $searchItem . '%');
+        })
+            ->when($request->chapter, function ($query, $searchItem) {
+                $query->where('Chapter', '=', $searchItem);
+            })
+            ->paginate(10);
+        return inertia('Attendance/Index', [
             "data" => $data,
             "filters" => $request->only(['search']),
         ]);
@@ -87,6 +105,43 @@ class AttendeeController extends Controller
             ->with('message', 'Participants added');
     }
 
+    public function qrscan(Request $request)
+    {
+        //dd($request);
+        try {
+            $id = $request->id;
+            $attendee = $this->model->findOrFail($id);
+            $day_tag = $request->day_tag;
+
+            if ($day_tag == 'Day1') {
+                //updated
+                $attendee->update([
+                    'Day_1' => 'Attended'
+                ]);
+            } else if ($day_tag == "Day2") {
+                $attendee->update([
+                    'Day_2' => 'Attended'
+                ]);
+            } else if ($day_tag == "Day3") {
+                $attendee->update([
+                    'Day_3' => 'Attended'
+                ]);
+            } else {
+                $attendee->update([
+                    'Day_1' => 'Absent',
+                    'Day_2' => 'Absent',
+                    'Day_3' => 'Absent',
+                ]);
+            }
+            return "Success";
+        } catch (\Exception $e) {
+
+            return $e;
+        }
+
+        return "Success";
+    }
+
     public function qrcode(Request $request)
     {
         $id_from = $request->id_from;
@@ -113,6 +168,9 @@ class AttendeeController extends Controller
             'First_Name',
             'Middle_Name',
             'Chapter',
+            'Day_1',
+            'Day_2',
+            'Day_3',
         )
             ->where('idattend', $idattend)
             ->get();

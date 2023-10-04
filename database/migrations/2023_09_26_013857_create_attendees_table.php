@@ -20,6 +20,9 @@ class CreateAttendeesTable extends Migration
             $table->string('First_Name');
             $table->string('Middle_Name');
             $table->string('Chapter');
+            $table->string('Day_1')->nullable();
+            $table->string('Day_2')->nullable();
+            $table->string('Day_3')->nullable();
             $table->timestamps();
         });
     }
