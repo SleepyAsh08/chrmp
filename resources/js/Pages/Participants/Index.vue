@@ -207,7 +207,7 @@ export default {
             var linkt = "http://";
             var jasper_ip = "122.53.120.27:8080/"
             // this.jasper_ip;
-            var jasper_link = 'jasperserver/flow.html?pp=u%3DJamshasadid%7Cr%3DManager%7Co%3DEMEA%2CSales%7Cpa1%3DSweden&_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Fchrmp&reportUnit=%2Freports%2Fchrmp%2Fchrmp&standAlone=true&decorate=no&output=pdf';
+            var jasper_link = 'jasperserver/flow.html?pp=u%3DJamshasadid%7Cr%3DManager%7Co%3DEMEA%2CSales%7Cpa1%3DSweden&_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2FCHRMP_Conference&reportUnit=%2Freports%2FCHRMP_Conference%2Fchrmp&standAlone=true&decorate=no&output=pdf';
             var params = '&id_from=' + id_from + '&id_to=' + id_to;
             var linkl = linkt + jasper_ip + jasper_link + params;
 
