@@ -1,6 +1,6 @@
 <template>
     <Head>
-        <title>Users</title>
+        <title>Participants</title>
     </Head>
 
     <div class="row gap-10 masonry pos-r">
@@ -26,11 +26,17 @@
                 <button class="btn btn-sm btn-primary mT-5 text-white" @click="printSubmit">Print Report</button>
             </FilterPrinting>
 
-        <!-- <filtering v-if="filter" @closeFilter="filter = false">
-            <label>Sample Inputs</label>
-            <input type="text" class="form-control">
-            <button class="btn btn-sm btn-primary mT-5 text-white" @click="">Filter</button>
-        </filtering> -->
+        <filtering v-if="filter" @closeFilter="filter = false">
+            Filter by Chapter
+            <select v-model="chapter"  class="form-control" @change="filterData()">
+            <option value="Davao de Oro">Davao de Oro</option>
+            <option value="Davao del Norte">Davao del Norte</option>
+            <option value="Davao del Sur/Occidental">Davao del Sur/Occidental</option>
+            <option value="Davao Oriental">Davao Oriental</option>
+            <option value="Davao City">Davao City</option>
+            </select>
+            <button class="btn btn-sm btn-primary mT-5 text-white" @click="clearFilter">Clear Filter</button>
+        </filtering>
 
         <div class="col-12">
             <div class="bgc-white p-20 bd">
@@ -111,13 +117,14 @@ export default {
     },
     data() {
         return {
-            // search: this.$props.filters.search,
+            search: this.$props.filters.search,
             filter_p: false,
             confirm: false,
             filter: false,
             displayModal: false,
             displayModal1: false,
             displayDisappModal: false,
+            chapter: "",
             my_link: "",
             id_from: "",
             id_to: "",
@@ -130,22 +137,42 @@ export default {
         };
     },
     watch: {
-        // search: _.debounce(function (value) {
-        //     this.$inertia.get(
-        //         "/users",
-        //         { search: value },
-        //         {
-        //             preserveScroll: true,
-        //             preserveState: true,
-        //             replace: true,
-        //         }
-        //     );
-        // }, 300),
+        search: _.debounce(function (value) {
+            this.$inertia.get(
+                "/participants",
+                { search: value },
+                {
+                    preserveScroll: true,
+                    preserveState: true,
+                    replace: true,
+                }
+            );
+        }, 300),
     },
     methods: {
         showFilter() {
             this.filter = !this.filter
         },
+        async clearFilter() {
+            this.chapter = "";
+            this.filterData();
+        },
+        async filterData() {
+            //alert(this.mfosel);
+            this.$inertia.get(
+                "/participants",
+                {
+                    chapter: this.chapter
+                },
+                {
+                    preserveScroll: true,
+                    preserveState: true,
+                    replace: true,
+                }
+            );
+        },
+
+
         onFileChanged() {
             this.form.myfile = this.$refs.myFile.files[0];
             console.log(this.form.myfile)

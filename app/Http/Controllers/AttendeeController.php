@@ -19,24 +19,18 @@ class AttendeeController extends Controller
 
     public function index(Request $request)
     {
-        $data = Attendee::paginate(10);
-        // dd($request);
-        // dd($data[0]->full_name);
-        // $paps = ProgramAndProject::findOrFail($idpaps);
-        // $data = $this->model
-        //     ->where('idpaps', $idpaps)
-        //     ->orderBy('created_at', 'desc')
-        //     ->paginate(10)
-        //     ->withQueryString();
+        $data = Attendee::when($request->search, function ($query, $searchItem) {
+            $query->orwhere('First_Name', 'LIKE', '%' . $searchItem . '%')
+                ->orwhere('Last_Name', 'LIKE', '%' . $searchItem . '%')
+                ->orwhere('Middle_Name', 'LIKE', '%' . $searchItem . '%');
+        })
+            ->when($request->chapter, function ($query, $searchItem) {
+                $query->where('Chapter', '=', $searchItem);
+            })
+            ->paginate(10);
         return inertia('Participants/Index', [
             "data" => $data,
-            //     "data" => $data,
-            //     "idpaps" => $idpaps,
-            //     "paps" => $paps,
-            //     'can' => [
-            //         'can_access_validation' => Auth::user()->can('can_access_validation', User::class),
-            //         'can_access_indicators' => Auth::user()->can('can_access_indicators', User::class)
-            //     ],
+            "filters" => $request->only(['search']),
         ]);
     }
 
