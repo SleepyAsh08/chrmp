@@ -11,7 +11,7 @@
                     <input v-model="search" type="text" class="form-control form-control-sm" placeholder="Search...">
                 </div>
                 <div class="peer">
-                    <button class="btn btn-primary btn-sm mL-2 text-white" @click="showFilterP()">Print</button>&nbsp;
+                    <button class="btn btn-primary btn-sm mL-2 text-white" @click="showFilterP()">Print</button>
                     <button class="btn btn-primary btn-sm mL-2 text-white" @click="showModal()">Import</button>
                     <button class="btn btn-primary btn-sm mL-2 text-white" @click="showFilter()">Filter</button>
                 </div>
