@@ -28,7 +28,7 @@
 
         <filtering v-if="filter" @closeFilter="filter = false">
             Filter by Chapter
-            <select v-model="chapter"  class="form-control" @change="filterData()">
+            <select v-model="chapter"  class="form-control" @change="filterData()" >
             <option value="Davao de Oro">Davao de Oro</option>
             <option value="Davao del Norte">Davao del Norte</option>
             <option value="Davao del Sur/Occidental">Davao del Sur/Occidental</option>
@@ -124,7 +124,7 @@ export default {
             displayModal: false,
             displayModal1: false,
             displayDisappModal: false,
-            chapter: "",
+            chapter: this.$props.filters.chapter,
             my_link: "",
             id_from: "",
             id_to: "",
@@ -158,6 +158,8 @@ export default {
             this.filterData();
         },
         async filterData() {
+
+
             //alert(this.mfosel);
             this.$inertia.get(
                 "/participants",

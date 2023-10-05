@@ -51,7 +51,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       displayModal: false,
       displayModal1: false,
       displayDisappModal: false,
-      chapter: "",
+      chapter: this.$props.filters.chapter,
       my_link: "",
       id_from: "",
       id_to: "",
