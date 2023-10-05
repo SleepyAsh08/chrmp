@@ -12,19 +12,18 @@
                 </div>
                 <div class="peer">
                     <!-- <button class="btn btn-primary btn-sm mL-2 text-white" @click="showFilterP()">Print</button>&nbsp; -->
-                    <!-- <button class="btn btn-primary btn-sm mL-2 text-white" @click="showModal()">Import</button> -->
-                    <!-- <button class="btn btn-primary btn-sm mL-2 text-white" @click="showFilter()">Filter</button> -->
+                    <button class="btn btn-primary btn-sm mL-2 text-white" @click="showFilter()">Filter</button>
                 </div>
             </div>
         </div>
 
-        <FilterPrinting v-if="filter_p" @closeFilter="filter_p = false">
+        <!-- <FilterPrinting v-if="filter_p" @closeFilter="filter_p = false">
             Participant ID From
             <input type="number" v-model="id_from" class="form-control" />
             Participant ID to
             <input type="number" v-model="id_to" class="form-control" />
             <button class="btn btn-sm btn-primary mT-5 text-white" @click="printSubmit">Print Report</button>
-        </FilterPrinting>
+        </FilterPrinting> -->
 
         <filtering v-if="filter" @closeFilter="filter = false">
             Filter by Chapter
@@ -46,6 +45,7 @@
                         <tr>
                             <th scope="col">Participant ID</th>
                             <th scope="col">Name</th>
+                            <th scope="col">Chapter</th>
                             <th scope="col">Day 1</th>
                             <th scope="col">Day 2</th>
                             <th scope="col">Day 3</th>
@@ -56,6 +56,7 @@
                         <tr v-for="dat in data.data">
                             <td>{{ dat.idattend }}</td>
                             <td>{{ dat.full_name }}</td>
+                            <td>{{ dat.Chapter }}</td>
                             <td>{{ dat.Day_1 }}</td>
                             <td>{{ dat.Day_2 }}</td>
                             <td>{{ dat.Day_3 }}</td>

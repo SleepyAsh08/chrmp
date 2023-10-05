@@ -46,7 +46,8 @@ class AttendeeController extends Controller
             ->when($request->chapter, function ($query, $searchItem) {
                 $query->where('Chapter', '=', $searchItem);
             })
-            ->paginate(10);
+            ->paginate(10)
+            ->withQueryString();
         return inertia('Attendance/Index', [
             "data" => $data,
             "filters" => $request->only(['search']),
