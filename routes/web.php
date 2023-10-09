@@ -13,11 +13,11 @@ Auth::routes();
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', function () {
-        return inertia('Home');
-    });
+    // Route::get('/', function () {
+    //     return inertia('Home');
+    // });
 
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
 
     Route::prefix('/users')->group(function () {
         Route::get('/', [UserController::class, 'index']);

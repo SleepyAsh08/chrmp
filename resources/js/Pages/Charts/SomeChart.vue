@@ -55,10 +55,10 @@ export default defineComponent({
     },
     setup(props) {
         const chartData = {
-            labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
+            labels: ['Davao de Oro', 'Davao del Norte', 'Davao del Sur/Occidental', 'Davao City', 'Davao Oriental'],
             datasets: [
                 {
-                    backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
+                    backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16', '#000000'],
                     data: props.chartData
                 }
             ]

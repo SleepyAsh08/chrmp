@@ -61,18 +61,11 @@ export default defineComponent({
 
         const chartData = {
             labels: [
-                'January',
-                'February',
-                'March',
-                'April',
-                'May',
-                'June',
-                'July',
-                'August',
-                'September',
-                'October',
-                'November',
-                'December'
+                'Davao de Oro',
+                'Davao del Norte',
+                'Davao del Sur/Occidental',
+                'Davao City',
+                'Davao Oriental',
             ],
             datasets: [
                 {
@@ -94,7 +87,7 @@ export default defineComponent({
             scales: {
                 yAxis: {
                     min: 0, // minimum value
-                    max: 100 // maximum value
+                    max: 300 // maximum value
                 }
             }
         }

@@ -59,9 +59,9 @@ chart_js__WEBPACK_IMPORTED_MODULE_1__.Chart.register(chart_js__WEBPACK_IMPORTED_
   },
   setup: function setup(props) {
     var chartData = {
-      labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
+      labels: ['Davao de Oro', 'Davao del Norte', 'Davao del Sur/Occidental', 'Davao City', 'Davao Oriental'],
       datasets: [{
-        backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
+        backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16', '#000000'],
         data: props.chartData
       }]
     };

@@ -60,7 +60,7 @@ chart_js__WEBPACK_IMPORTED_MODULE_1__.Chart.register(chart_js__WEBPACK_IMPORTED_
   setup: function setup(props) {
     var vm = this;
     var chartData = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      labels: ['Davao de Oro', 'Davao del Norte', 'Davao del Sur/Occidental', 'Davao City', 'Davao Oriental'],
       datasets: [{
         label: 'Data One',
         backgroundColor: ['#329719', '#433979', '#544979', '#855979', '#966979', '#177979', '#f87327', '#f81279', '#f87979', '#f86979', '#f11979', '#f89979'],
@@ -79,7 +79,7 @@ chart_js__WEBPACK_IMPORTED_MODULE_1__.Chart.register(chart_js__WEBPACK_IMPORTED_
         yAxis: {
           min: 0,
           // minimum value
-          max: 100 // maximum value
+          max: 300 // maximum value
 
         }
       }
